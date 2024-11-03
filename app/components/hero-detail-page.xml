@@ -1,0 +1,77 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="{{ hero.name }}" class="action-bar">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" />
+        <ActionItem tap="{{ toggleFavorite }}" ios.position="right">
+            <Label text="{{ isFavorite ? '★' : '☆' }}" class="text-2xl" />
+        </ActionItem>
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <!-- Hero Basic Info -->
+            <Label text="{{ hero.role }}" class="text-lg text-gray-600" />
+            <Label text="Difficulty: {{ hero.difficulty }}" class="text-sm" />
+            
+            <!-- Stats and Builds -->
+            <TabView>
+                <!-- Overview Tab -->
+                <TabViewItem title="Overview">
+                    <StackLayout>
+                        <Label text="Pros:" class="font-bold mt-2" />
+                        <Repeater items="{{ hero.pros }}">
+                            <Repeater.itemTemplate>
+                                <Label text="{{ '• ' + $value }}" class="ml-4" />
+                            </Repeater.itemTemplate>
+                        </Repeater>
+
+                        <Label text="Cons:" class="font-bold mt-2" />
+                        <Repeater items="{{ hero.cons }}">
+                            <Repeater.itemTemplate>
+                                <Label text="{{ '• ' + $value }}" class="ml-4" />
+                            </Repeater.itemTemplate>
+                        </Repeater>
+                    </StackLayout>
+                </TabViewItem>
+
+                <!-- Builds Tab -->
+                <TabViewItem title="Builds">
+                    <ScrollView>
+                        <StackLayout>
+                            <Repeater items="{{ hero.recommended_builds }}">
+                                <Repeater.itemTemplate>
+                                    <StackLayout class="build-card m-2 p-4">
+                                        <Label text="{{ name }}" class="font-bold" />
+                                        <Repeater items="{{ items }}">
+                                            <Repeater.itemTemplate>
+                                                <Label text="{{ '• ' + $value }}" class="ml-4" />
+                                            </Repeater.itemTemplate>
+                                        </Repeater>
+                                    </StackLayout>
+                                </Repeater.itemTemplate>
+                            </Repeater>
+                        </StackLayout>
+                    </ScrollView>
+                </TabViewItem>
+
+                <!-- Counters Tab -->
+                <TabViewItem title="Counters">
+                    <StackLayout>
+                        <Label text="Strong Against:" class="font-bold mt-2" />
+                        <Repeater items="{{ hero.counters.strong_against }}">
+                            <Repeater.itemTemplate>
+                                <Label text="{{ '• ' + $value }}" class="ml-4" />
+                            </Repeater.itemTemplate>
+                        </Repeater>
+
+                        <Label text="Weak Against:" class="font-bold mt-2" />
+                        <Repeater items="{{ hero.counters.weak_against }}">
+                            <Repeater.itemTemplate>
+                                <Label text="{{ '• ' + $value }}" class="ml-4" />
+                            </Repeater.itemTemplate>
+                        </Repeater>
+                    </StackLayout>
+                </TabViewItem>
+            </TabView>
+        </StackLayout>
+    </ScrollView>
+</Page>

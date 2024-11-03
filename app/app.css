@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern UI Theme */
+.page {
+    background-color: #f8fafc;
+}
+
+.action-bar {
+    background-color: #1e293b;
+    color: #f8fafc;
+    elevation: 0;
+}
+
+.hero-card {
+    background-color: #ffffff;
+    border-radius: 16;
+    margin: 8 16;
+    padding: 16;
+    elevation: 2;
+}
+
+.search-bar {
+    background-color: #ffffff;
+    border-radius: 12;
+    margin: 16;
+    padding: 12 16;
+    elevation: 1;
+    placeholder-color: #94a3b8;
+}
+
+.tab-view {
+    selected-tab-text-color: #3b82f6;
+    tab-text-color: #64748b;
+    tab-background-color: transparent;
+}
+
+.stat-label {
+    color: #64748b;
+    font-size: 14;
+}
+
+.stat-value {
+    color: #1e293b;
+    font-size: 16;
+    font-weight: 600;
+}
+
+.role-tag {
+    background-color: #dbeafe;
+    color: #2563eb;
+    border-radius: 8;
+    padding: 4 12;
+    margin: 4;
+    font-size: 12;
+}

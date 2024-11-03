@@ -1,0 +1,28 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="page">
+    <ActionBar title="MLBB Assistant" class="action-bar">
+        <ActionItem tap="{{ startScreenAnalysis }}" ios.position="right" android.position="right">
+            <Label text="{{ isAnalyzing ? '◉' : '○' }}" class="text-2xl" color="{{ isAnalyzing ? '#4ade80' : '#94a3b8' }}" />
+        </ActionItem>
+    </ActionBar>
+    
+    <GridLayout rows="auto, *">
+        <SearchBar row="0" hint="Search heroes..." text="{{ searchQuery }}" 
+                  submit="{{ onSearch }}" class="search-bar" />
+        
+        <ListView row="1" items="{{ heroes }}" itemTap="{{ onHeroSelect }}" separatorColor="transparent">
+            <ListView.itemTemplate>
+                <GridLayout columns="auto, *, auto" class="hero-card">
+                    <Image col="0" src="{{ img }}" width="60" height="60" class="rounded-xl" />
+                    <StackLayout col="1" class="ml-3">
+                        <Label text="{{ name }}" class="text-lg font-semibold text-slate-900" />
+                        <WrapLayout>
+                            <Label text="{{ role }}" class="role-tag" />
+                            <Label text="{{ difficulty }}" class="role-tag ml-2" />
+                        </WrapLayout>
+                    </StackLayout>
+                    <Label col="2" text="›" class="text-2xl text-slate-400" />
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </GridLayout>
+</Page>
